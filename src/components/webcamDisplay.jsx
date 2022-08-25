@@ -26,7 +26,7 @@ const WebcamDisplay = () => {
 
         if (results.multiHandLansmarks) {
             for (const landmarks of results.multiHandLandmarks) {
-                connect(canvasCtx, landmarks, MediapipeHands.HAND_CONNECTIONS,
+                connect(canvasCtx, landmarks, Hands.HAND_CONNECTIONS,
                     { color: '#00FF00', lineWidth: 5 });
                 DrawingUtils.drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
             }
