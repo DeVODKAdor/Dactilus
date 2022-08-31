@@ -2,12 +2,18 @@ import { Camera } from "@mediapipe/camera_utils";
 import { drawLandmarks, drawConnectors } from "@mediapipe/drawing_utils";
 import { HAND_CONNECTIONS, Hands } from "@mediapipe/hands";
 import PreProcessData from "../model/normalizeData";
+import { getStorage, ref } from "firebase/storage";
+import * as tf from '@tensorflow/tfjs'
 
-function WebcamDisplay () {
-  
+
+async function WebcamDisplay() {
+
   const videoElement = document.getElementsByClassName("input_video")[0];
   const canvasElement = document.getElementsByClassName("output_canvas")[0];
   const canvasCtx = canvasElement.getContext("2d");
+  const storage = getStorage();
+  const model = ref(storage, 'gs://dactilus-12bc4.appspot.com/model_dactilus/model.json');
+  const ai = await tf.loadGraphModel('https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json')
   function onResults(results) {
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
@@ -26,10 +32,11 @@ function WebcamDisplay () {
         });
         drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
         let data = PreProcessData(canvasElement, landmarks)
-        
+        const predict = ai.predict(data)
+        console.log(predict)
       }
+      canvasCtx.restore();
     }
-    canvasCtx.restore();
   }
 
   const hands = new Hands({
