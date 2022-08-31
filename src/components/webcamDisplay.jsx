@@ -13,7 +13,7 @@ async function WebcamDisplay() {
   const canvasCtx = canvasElement.getContext("2d");
   const storage = getStorage();
   const model = ref(storage, 'gs://dactilus-12bc4.appspot.com/model_dactilus/model.json');
-  const ai = await tf.loadGraphModel('https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json')
+  const ai = await tf.loadLayersModel('https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json')
   function onResults(results) {
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
