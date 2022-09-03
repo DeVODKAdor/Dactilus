@@ -2,19 +2,51 @@ import { Camera } from "@mediapipe/camera_utils";
 import { drawLandmarks, drawConnectors } from "@mediapipe/drawing_utils";
 import { HAND_CONNECTIONS, Hands } from "@mediapipe/hands";
 import PreProcessData from "../model/normalizeData";
-import { getStorage, ref } from "firebase/storage";
-import * as tf from '@tensorflow/tfjs'
+import * as tf from "@tensorflow/tfjs";
+import { useEffect, useRef } from "react";
+import Webcam from "react-webcam";
+import '../styles/webcamStyle.css'
 
+const WebcamDisplay = () => {
+  const webcamRef = useRef(null);
+  const canvasRef = useRef(null);
+  // const model = await tf.loadLayersModel('https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json')
+  useEffect(() => {
+    const hands = new Hands({
+      locateFile: (file) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+      },
+    });
+    hands.setOptions({
+      maxNumHands: 1,
+      modelComplexity: 1,
+      minDetectionConfidence: 0.5,
+      minTrackingConfidence: 0.5,
+    });
+    hands.onResults(onResults);
 
-async function WebcamDisplay() {
+    if (
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null
+    ) {
+      const camera = new Camera(webcamRef.current.video, {
+        onFrame: async () => {
+          await hands.send({ image: webcamRef.current.video });
+        },
+        width: 1280,
+        height: 720,
+      });
+      camera.start();
+    }
+  }, []);
 
-  const videoElement = document.getElementsByClassName("input_video")[0];
-  const canvasElement = document.getElementsByClassName("output_canvas")[0];
-  const canvasCtx = canvasElement.getContext("2d");
-  const storage = getStorage();
-  const model = ref(storage, 'gs://dactilus-12bc4.appspot.com/model_dactilus/model.json');
-  const ai = await tf.loadLayersModel('https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json')
   function onResults(results) {
+    const videoWidth = webcamRef.current.video.videoWidth;
+    const videoHeight = webcamRef.current.video.videoHeight;
+    canvasRef.current.width = videoWidth;
+    canvasRef.current.height = videoHeight;
+    const canvasElement = canvasRef.current;
+    const canvasCtx = canvasElement.getContext("2d");
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
     canvasCtx.drawImage(
@@ -31,39 +63,26 @@ async function WebcamDisplay() {
           lineWidth: 5,
         });
         drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
-        let data = PreProcessData(canvasElement, landmarks)
-        const predict = ai.predict(data)
-        console.log(predict)
+        // let data = PreProcessData(canvasElement, landmarks)
+        // const predict = model.predict(data)
+        // console.log(predict)
       }
       canvasCtx.restore();
     }
   }
-
-  const hands = new Hands({
-    locateFile: (file) => {
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
-    },
-  });
-  hands.setOptions({
-    maxNumHands: 1,
-    modelComplexity: 1,
-    minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5,
-  });
-  hands.onResults(onResults);
-
-  const camera = new Camera(videoElement, {
-    onFrame: async () => {
-      await hands.send({ image: videoElement });
-    },
-    width: 1280,
-    height: 720,
-  });
-  camera.start();
   return (
-    <>
-      <canvas image={videoElement}></canvas>
-    </>
+    <div>
+      <Webcam
+      className='Webcam'
+      audio={false}
+      mirrored={true}
+      ref={webcamRef}
+      />
+      <canvas
+      className="Webcam"
+      mirrored='true'
+      ref={canvasRef}></canvas>
+    </div>
   )
 }
 
