@@ -5,12 +5,20 @@ import PreProcessData from "../model/normalizeData";
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef } from "react";
 import Webcam from "react-webcam";
-import '../styles/webcamStyle.css'
+import React from "react";
+import "../styles/webcamStyle.css";
 
 const WebcamDisplay = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  // const model = await tf.loadLayersModel('https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json')
+  const loadModel = async () => {
+    const model = await tf.loadLayersModel(
+      "https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json"
+    );
+    return model;
+  };
+
+  loadModel();
   useEffect(() => {
     const hands = new Hands({
       locateFile: (file) => {
@@ -24,7 +32,6 @@ const WebcamDisplay = () => {
       minTrackingConfidence: 0.5,
     });
     hands.onResults(onResults);
-
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null
@@ -73,17 +80,14 @@ const WebcamDisplay = () => {
   return (
     <div>
       <Webcam
-      className='Webcam'
-      audio={false}
-      mirrored={true}
-      ref={webcamRef}
+        className="Webcam"
+        audio={false}
+        mirrored={true}
+        ref={webcamRef}
       />
-      <canvas
-      className="Webcam"
-      mirrored='true'
-      ref={canvasRef}></canvas>
+      <canvas className="Webcam" mirrored="true" ref={canvasRef}></canvas>
     </div>
-  )
-}
+  );
+};
 
 export default WebcamDisplay;

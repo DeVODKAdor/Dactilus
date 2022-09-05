@@ -19,7 +19,7 @@ function PreProcessData(canvas, landmarkList) {
     baseY = 0;
 
   for (const [index, landmarkPoint] of tempLandmarkList.entries()) {
-    if (index == 0) {
+    if (index === 0) {
       baseX = landmarkPoint[0];
       baseY = landmarkPoint[1];
     }
