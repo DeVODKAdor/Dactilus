@@ -11,9 +11,9 @@
         "name": "sequential",
         "layers": [
           {
-            "class_name": "DenseFeatures",
+            "class_name": "Dense",
             "config": {
-              "name": "dense_features",
+              "name": "dense",
               "trainable": true,
               "dtype": "float32",
               "feature_columns": [

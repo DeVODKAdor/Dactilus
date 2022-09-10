@@ -13,12 +13,12 @@ const WebcamDisplay = () => {
   const canvasRef = useRef(null);
   const loadModel = async () => {
     const model = await tf.loadLayersModel(
-      "https://storage.cloud.google.com/dactilus-12bc4.appspot.com/model_dactilus/model.json"
+      "https://dactilusbucket.s3.sa-east-1.amazonaws.com/model.json"
     );
     return model;
   };
 
-  loadModel();
+  const model = loadModel();
   useEffect(() => {
     const hands = new Hands({
       locateFile: (file) => {
@@ -70,9 +70,8 @@ const WebcamDisplay = () => {
           lineWidth: 5,
         });
         drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
-        // let data = PreProcessData(canvasElement, landmarks)
-        // const predict = model.predict(data)
-        // console.log(predict)
+        let data = PreProcessData(canvasElement, landmarks);
+        model.predict(data)
       }
       canvasCtx.restore();
     }
