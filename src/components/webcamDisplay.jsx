@@ -11,8 +11,8 @@ import "../styles/webcamStyle.css";
 const WebcamDisplay = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const modelPath = "../model/model.json"
-  const loadModel = async() => await tf.loadGraphModel(modelPath);
+  const modelURL = "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modeltfjs.json"
+  const loadModel = async() => await tf.loadGraphModel(modelURL);
   const model = loadModel();
   useEffect(() => {
     const hands = new Hands({
