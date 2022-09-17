@@ -66,6 +66,7 @@ const WebcamDisplay = () => {
           lineWidth: 5,
         });
         drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
+<<<<<<< HEAD
         model.then(
           (res) => {
           let data = PreProcessData(canvasElement, landmarks);
@@ -77,6 +78,18 @@ const WebcamDisplay = () => {
           }
         );
         
+=======
+        model.then(res => {
+          let data = PreProcessData(canvasElement, landmarks);
+          data = tf.tensor(data)
+          data = tf.expandDims(data)
+          //console.log(data)
+          let predictions = res.predict(data)
+          console.log(predictions)
+        }, err => {
+          console.log(err)
+        })
+>>>>>>> 6df8d3f7b86f50ae6e996693b10162ec1ce1b8c7
       }
       canvasCtx.restore();
     }
