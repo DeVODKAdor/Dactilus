@@ -11,8 +11,9 @@ import "../styles/webcamStyle.css";
 const WebcamDisplay = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const modelURL = "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modeltfjs.json"
-  const loadModel = async() => await tf.loadGraphModel(modelURL);
+  const modelURL =
+    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modeltfjs.json";
+  const loadModel = async () => await tf.loadGraphModel(modelURL);
   const model = loadModel();
   useEffect(() => {
     const hands = new Hands({
@@ -65,9 +66,17 @@ const WebcamDisplay = () => {
           lineWidth: 5,
         });
         drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
-        console.log(model)
-        //let data = PreProcessData(canvasElement, landmarks);
-        //model.predict(data);
+        model.then(
+          (res) => {
+          let data = PreProcessData(canvasElement, landmarks);
+          let prediction = res.predict(data);
+          console.log(data);
+        },
+          (err) => {
+            console.log(err);
+          }
+        );
+        
       }
       canvasCtx.restore();
     }
