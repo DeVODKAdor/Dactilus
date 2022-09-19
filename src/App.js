@@ -5,7 +5,6 @@ import WebcamDisplay from "./components/webcamDisplay";
 function App() {
   return (
     <div className="App">
-      <WebcamDisplay></WebcamDisplay>
     </div>
   );
 }

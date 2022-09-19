@@ -6,91 +6,48 @@ import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef } from "react";
 import Webcam from "react-webcam";
 import React from "react";
+import SashiDoTeachableMachine from "@sashido/teachablemachine-node";
 import "../styles/webcamStyle.css";
 
 const WebcamDisplay = () => {
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
-  const modelURL =
-    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modeltfjs.json";
-  const loadModel = async () => await tf.loadGraphModel(modelURL);
-  const model = loadModel();
-  useEffect(() => {
-    const hands = new Hands({
-      locateFile: (file) => {
-        return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
-      },
-    });
-    hands.setOptions({
-      maxNumHands: 1,
-      modelComplexity: 1,
-      minDetectionConfidence: 0.5,
-      minTrackingConfidence: 0.5,
-    });
-    hands.onResults(onResults);
-    if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null
-    ) {
-      const camera = new Camera(webcamRef.current.video, {
-        onFrame: async () => {
-          await hands.send({ image: webcamRef.current.video });
-        },
-        width: 1280,
-        height: 720,
-      });
-      camera.start();
-    }
-  }, []);
+  const URL = "https://teachablemachine.withgoogle.com/models/fPpOh734r/";
 
-  function onResults(results) {
-    const videoWidth = webcamRef.current.video.videoWidth;
-    const videoHeight = webcamRef.current.video.videoHeight;
-    canvasRef.current.width = videoWidth;
-    canvasRef.current.height = videoHeight;
-    const canvasElement = canvasRef.current;
-    const canvasCtx = canvasElement.getContext("2d");
-    canvasCtx.save();
-    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-    canvasCtx.drawImage(
-      results.image,
-      0,
-      0,
-      canvasElement.width,
-      canvasElement.height
-    );
-    if (results.multiHandLandmarks) {
-      for (const landmarks of results.multiHandLandmarks) {
-        drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
-          color: "#00FF00",
-          lineWidth: 5,
-        });
-        drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
-        model.then(res => {
-          let data = PreProcessData(canvasElement, landmarks);
-          data = tf.tensor(data)
-          data = tf.expandDims(data)
-          //console.log(data)
-          let predictions = res.predict(data)
-          console.log(predictions)
-        }, err => {
-          console.log(err)
-        })
-      }
-      canvasCtx.restore();
+  let model, webcam, labelContainer, maxPredictions;
+
+  // Load the image model and setup the webcam
+  async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+    maxPredictions = model.getTotalClasses();
+    const flip = false; // whether to flip the webcam
+    webcam = new tmImage.Webcam(556, 599, flip); // width, height, flip
+    await webcam.setup(); // request access to the webcam
+    await webcam.play();
+    window.requestAnimationFrame(loop);
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    labelContainer = document.getElementById("label-container");
+    for (let i = 0; i < maxPredictions; i++) {
+      // and class labels
+      labelContainer.appendChild(document.createElement("div"));
     }
   }
-  return (
-    <div>
-      <Webcam
-        className="Webcam"
-        audio={false}
-        mirrored={true}
-        ref={webcamRef}
-      />
-      <canvas className="Webcam" mirrored="true" ref={canvasRef}></canvas>
-    </div>
-  );
+
+  async function loop() {
+    webcam.update(); // update the webcam frame
+    await predict();
+    window.requestAnimationFrame(loop);
+  }
+
+  // run the webcam image through the image model
+  async function predict() {
+    // predict can take in an image, video or canvas html element
+    const prediction = await model.predict(webcam.canvas);
+    for (let i = 0; i < maxPredictions; i++) {
+      const classPrediction =
+        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+      labelContainer.childNodes[i].innerHTML = classPrediction;
+    }
+  }
 };
 
 export default WebcamDisplay;
