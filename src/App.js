@@ -1,12 +1,18 @@
 import React from "react";
 import "./App.css";
-import WebcamDisplay from "./components/webcamDisplay";
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <WebcamDisplay/>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" exact />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
