@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../../assets/fonts/poppins/Poppins-Regular.ttf");
+}
+
+.navbar-container {
+    width: 100%;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 36px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.arrow {
+    padding-left: 5px;
+}
