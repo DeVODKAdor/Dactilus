@@ -1,0 +1,32 @@
+.tecnologia {
+    margin: auto;
+    font-family: "Poppins";
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 310px;
+    height: 280px;
+    border-style: solid;
+    border-color: #79BDEF;
+    border-radius: 50%;
+}
+
+.imagem {
+    width: 200px;
+    height: 200px;
+    align-self: center;
+}
+
+.nome-tecnologia {
+    font-size: 36px;
+    text-align: center;
+}
+
+.descrição {
+    margin: 10%;
+    font-size: 30px;
+    text-align: justify;
+}

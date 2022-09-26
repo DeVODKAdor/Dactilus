@@ -1,0 +1,15 @@
+.integrante {
+    width: 30%;
+    font-family: "Poppins";
+    text-align: center;
+}
+
+.nome-integrante {
+    font-size: 32px;
+    color: #79BDEF;
+}
+
+.descrição-integrante {
+    padding: 5%;
+    font-size: 24px;
+}
