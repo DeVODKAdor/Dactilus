@@ -20,7 +20,6 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Popup />
       <Carrossel />
       <Titulo texto="PROJETO DACTILUS" />
       <div className="container">
