@@ -10,12 +10,13 @@ function WebcamDisplay() {
 
   const webcamRef = useRef(null);
   const [letra, setLetra] = useState("");
+  let palavra = ""
 
   const loadModel = async () => {
     const model = await loadLayersModel(URL);
     setInterval(() => {
       detect(model);
-    }, 100);
+    }, 5000);
   };
 
   const labelMap = {
@@ -66,8 +67,9 @@ function WebcamDisplay() {
       const expanded = casted.expandDims(0);
       const obj = await model.predict(expanded);
       let resultado = argMax(softmax(obj.dataSync())).dataSync()[0]
-      setLetra(labelMap[resultado]['letra'])
       
+      palavra += labelMap[resultado]['letra']
+      setLetra(palavra)
     }
   };
 
@@ -77,7 +79,7 @@ function WebcamDisplay() {
 
   return (
     <>
-      <Webcam ref={webcamRef} mirrored={true} style={{ width: 224, height: 224 }} />
+      <Webcam ref={webcamRef} mirrored={true} style={{ width: 600, height: 600 }} />
       <div>{letra}</div>
     </>
   );
