@@ -1,6 +1,7 @@
 import React from "react";
 import "./TraducaoLibras.css"
 import Navbar from "../../components/navbar/Navbar";
+import WebcamDisplay from "../../components/webcam/Webcam";
 
 function TraducaoLibras() {
   const texto =
@@ -9,6 +10,9 @@ function TraducaoLibras() {
     <>
       <Navbar />
       <p className="aviso">{texto}</p>
+      <div className="display">
+        <WebcamDisplay />
+      </div>
     </>
   );
 }

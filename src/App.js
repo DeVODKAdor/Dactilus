@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Home />}/>
-          <Route path="traducao-libras" exact element={<TraducaoLibras />} />
+          <Route path="/traducao-libras" exact element={<TraducaoLibras />} />
           <Route path="/login" exact element={<Login />}/>
         </Routes>
       </BrowserRouter>

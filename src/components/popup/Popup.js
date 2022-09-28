@@ -8,9 +8,9 @@ function Popup(props) {
     <div className="popup-container" style={{visibility: props.visivel}}>
       <img className="setinha" src={setinha}/>
       <div className="popup">
-        <Link to="traducao-libras" className="opcao">Traduzir Libras para português</Link>
+        <Link to="/traducao-libras" className="opcao">Traduzir Libras para português</Link>
         <div className="linha" />
-        <Link to="traducao-portugues" className="opcao">Traduzir português para Libras</Link>
+        <Link to="/traducao-portugues" className="opcao">Traduzir português para Libras</Link>
       </div>
     </div>
   );
