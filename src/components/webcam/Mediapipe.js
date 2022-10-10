@@ -8,6 +8,8 @@ import { useEffect, useRef } from "react";
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const number = 25;
+  let csvContent = "";
 
   const onResults = (results) => {
     const videoWidth = webcamRef.current.video.videoWidth;
@@ -28,6 +30,7 @@ const Mediapipe = () => {
       canvasElement.width,
       canvasElement.height
     );
+
     if (results.multiHandLandmarks) {
       for (const landmarks of results.multiHandLandmarks) {
         drawing.drawConnectors(canvasCtx, landmarks, mpHands.HAND_CONNECTIONS, {
@@ -38,13 +41,13 @@ const Mediapipe = () => {
           color: "#00FF00",
           lineWidth: 2,
         });
-        let line = "";
+        let line = number + ",";
         for (let i = 0; i < 21; i++) {
           if (i === 20) {
-            line += landmarks[i].x + "," + landmarks[i].y + '\n';
-            console.log(line);
-            require("fs").writeFileSync("keypoint.csv", line)
-            line = "";
+            line += landmarks[i].x + "," + landmarks[i].y + "\n";
+            csvContent += line;
+            console.log(csvContent);
+            line = number + ",";
           } else {
             line += landmarks[i].x + "," + landmarks[i].y + ",";
           }
