@@ -2,6 +2,7 @@ import * as mpHands from "@mediapipe/hands";
 import * as mpCamera from "@mediapipe/camera_utils";
 import * as drawing from "@mediapipe/drawing_utils";
 import Webcam from "react-webcam";
+import "./Mediapipe.css";
 import { useEffect, useRef } from "react";
 
 const Mediapipe = () => {
@@ -30,13 +31,24 @@ const Mediapipe = () => {
     if (results.multiHandLandmarks) {
       for (const landmarks of results.multiHandLandmarks) {
         drawing.drawConnectors(canvasCtx, landmarks, mpHands.HAND_CONNECTIONS, {
-          color: "#00FF00",
+          color: "#79BDEF",
           lineWidth: 5,
         });
         drawing.drawLandmarks(canvasCtx, landmarks, {
-          color: "#FF0000",
+          color: "#00FF00",
           lineWidth: 2,
         });
+        let line = "";
+        for (let i = 0; i < 21; i++) {
+          if (i === 20) {
+            line += landmarks[i].x + "," + landmarks[i].y + '\n';
+            console.log(line);
+            require("fs").writeFileSync("keypoint.csv", line)
+            line = "";
+          } else {
+            line += landmarks[i].x + "," + landmarks[i].y + ",";
+          }
+        }
       }
     }
     canvasCtx.restore();
@@ -49,7 +61,7 @@ const Mediapipe = () => {
       },
     });
     hands.setOptions({
-      maxNumHands: 2,
+      maxNumHands: 1,
       modelComplexity: 1,
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5,
@@ -67,7 +79,7 @@ const Mediapipe = () => {
         width: 640,
         height: 480,
       });
-      camera.start()
+      camera.start();
     }
   }, []);
 
@@ -75,6 +87,7 @@ const Mediapipe = () => {
     <>
       <Webcam
         ref={webcamRef}
+        mirrored={true}
         style={{
           position: "absolute",
           marginLeft: "auto",

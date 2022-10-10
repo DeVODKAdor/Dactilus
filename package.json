@@ -9,8 +9,6 @@
     "@mediapipe/drawing_utils": "^0.3.1620248257",
     "@mediapipe/hands": "^0.4.1646424915",
     "@mui/material": "^5.10.7",
-    "@sashido/teachablemachine-node": "^1.2.2",
-    "@teachablemachine/image": "^0.8.5",
     "@tensorflow/tfjs": "^1.7.4",
     "@tensorflow/tfjs-converter": "^3.20.0",
     "@tensorflow/tfjs-core": "^3.20.0",

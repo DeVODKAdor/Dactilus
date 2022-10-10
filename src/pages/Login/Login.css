@@ -3,9 +3,6 @@
     src: url("../../assets/fonts/fredokaOne/FredokaOne-Regular.ttf");
 }
 
-body {
-    overflow: hidden;
-}
 
 .boas-vindas {
     text-align: center;
