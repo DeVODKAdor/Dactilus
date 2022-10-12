@@ -5,18 +5,73 @@ import * as tf from "@tensorflow/tfjs";
 import { loadGraphModel } from "@tensorflow/tfjs-converter";
 import Webcam from "react-webcam";
 import "./Mediapipe.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+
   const MODEL_URL =
     "https://dactilusbucket.s3.sa-east-1.amazonaws.com/model/modeltfjs/model.json";
   const loadModel = async () => {
     const model = loadGraphModel(MODEL_URL);
     return model;
   };
+  let palavra = ""
+  const mostFrequent = (arr, n) => {
+    // Sort the array
+    arr.sort();
+
+    // find the max frequency using linear
+    // traversal
+    let max_count = 1,
+      res = arr[0];
+    let curr_count = 1;
+
+    for (let i = 1; i < n; i++) {
+      if (arr[i] == arr[i - 1]) curr_count++;
+      else curr_count = 1;
+
+      if (curr_count > max_count) {
+        max_count = curr_count;
+        res = arr[i - 1];
+      }
+    }
+
+    return res;
+  }
   const model = loadModel();
+  const cypher = {
+    0: "A",
+    1: "B",
+    2: "C",
+    3: "D",
+    4: "E",
+    5: "F",
+    6: "G",
+    7: "H",
+    8: "I",
+    9: "J",
+    10: "K",
+    11: "L",
+    12: "M",
+    13: "N",
+    14: "O",
+    15: "P",
+    16: "Q",
+    17: "R",
+    18: "S",
+    19: "T",
+    20: "U",
+    21: "V",
+    22: "W",
+    23: "X",
+    24: "Y",
+    25: "Z",
+  }; // dei esse nome pq achei maneiro
+
+  const [letra, setLetra] = useState("");
+  let resultados = [];
 
   const onResults = (results) => {
     const videoWidth = webcamRef.current.video.videoWidth;
@@ -58,10 +113,15 @@ const Mediapipe = () => {
                 const prediction = tf.tensor(predict);
                 const expandedPrediction = prediction.expandDims(0);
                 const result = model.predict(expandedPrediction);
-                const array = result.dataSync()
-                const final = array.indexOf(Math.max(...array))
-                console.log(final)
+                const array = result.dataSync();
+                const final = array.indexOf(Math.max(...array));
+                resultados.push(final);
                 predict = [];
+                if (resultados.length === 50) {
+                  palavra += cypher[mostFrequent(resultados, 50)];
+                  setLetra(palavra);
+                  resultados = [];
+                }
               },
               (err) => {
                 console.log(err);
@@ -104,38 +164,46 @@ const Mediapipe = () => {
   }, []);
 
   return (
-    <>
-      <Webcam
-        ref={webcamRef}
-        mirrored={true}
-        style={{
-          position: "absolute",
-          marginLeft: "auto",
-          marginRight: "auto",
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          zindex: 9,
-          width: 640,
-          height: 480,
-        }}
-      />
-      <canvas
-        ref={canvasRef}
-        className="output_canvas"
-        style={{
-          position: "absolute",
-          marginLeft: "auto",
-          marginRight: "auto",
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          zindex: 9,
-          width: 640,
-          height: 480,
-        }}
-      />
-    </>
+    <div className="container">
+      <div>
+        <Webcam
+          ref={webcamRef}
+          mirrored={true}
+          hidden={true}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 9,
+            width: 640,
+            height: 480,
+          }}
+        />
+        <canvas
+          ref={canvasRef}
+          className="output_canvas"
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 9,
+            width: 640,
+            height: 480,
+          }}
+        />
+      </div>
+      <div className="exibidor">
+        <h1>
+          <strong>TRADUÇÃO</strong>
+        </h1>
+        <h2>{letra}</h2>
+      </div>
+    </div>
   );
 };
 

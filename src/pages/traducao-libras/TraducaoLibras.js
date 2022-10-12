@@ -1,7 +1,6 @@
 import React from "react";
 import "./TraducaoLibras.css"
 import Navbar from "../../components/navbar/Navbar";
-import WebcamDisplay from "../../components/webcam/Webcam";
 import Mediapipe from "../../components/webcam/Mediapipe"
 
 function TraducaoLibras() {

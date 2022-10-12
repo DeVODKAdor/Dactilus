@@ -1,3 +1,13 @@
 .output_canvas {
     transform: scaleX(-1);
 }
+
+.exibidor {
+    font-family: "Poppins";
+    color: white;
+    text-align: center;
+    border-radius: 40px;
+    width: 645px;
+    height: 380px;
+    background-color: #79BDEF;
+}
