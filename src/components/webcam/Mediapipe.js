@@ -1,6 +1,8 @@
 import * as mpHands from "@mediapipe/hands";
 import * as mpCamera from "@mediapipe/camera_utils";
 import * as drawing from "@mediapipe/drawing_utils";
+import * as tf from "@tensorflow/tfjs";
+import { loadGraphModel } from "@tensorflow/tfjs-converter";
 import Webcam from "react-webcam";
 import "./Mediapipe.css";
 import { useEffect, useRef } from "react";
@@ -8,8 +10,13 @@ import { useEffect, useRef } from "react";
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const number = 25;
-  let csvContent = "";
+  const MODEL_URL =
+    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/model/modeltfjs/model.json";
+  const loadModel = async () => {
+    const model = loadGraphModel(MODEL_URL);
+    return model;
+  };
+  const model = loadModel();
 
   const onResults = (results) => {
     const videoWidth = webcamRef.current.video.videoWidth;
@@ -41,15 +48,25 @@ const Mediapipe = () => {
           color: "#00FF00",
           lineWidth: 2,
         });
-        let line = number + ",";
+        let predict = [];
         for (let i = 0; i < 21; i++) {
+          predict.push(landmarks[i].x);
+          predict.push(landmarks[i].y);
           if (i === 20) {
-            line += landmarks[i].x + "," + landmarks[i].y + "\n";
-            csvContent += line;
-            console.log(csvContent);
-            line = number + ",";
-          } else {
-            line += landmarks[i].x + "," + landmarks[i].y + ",";
+            model.then(
+              (model) => {
+                const prediction = tf.tensor(predict);
+                const expandedPrediction = prediction.expandDims(0);
+                const result = model.predict(expandedPrediction);
+                const array = result.dataSync()
+                const final = array.indexOf(Math.max(...array))
+                console.log(final)
+                predict = [];
+              },
+              (err) => {
+                console.log(err);
+              }
+            );
           }
         }
       }
