@@ -2,6 +2,10 @@ import * as mpHands from "@mediapipe/hands";
 import * as mpCamera from "@mediapipe/camera_utils";
 import * as drawing from "@mediapipe/drawing_utils";
 import * as tf from "@tensorflow/tfjs";
+import apagar from "../../assets/images/botoes/apagar.png";
+import espacamento from "../../assets/images/botoes/espacamento.png";
+import lixeira from "../../assets/images/botoes/lixeira.png";
+import quadrados from "../../assets/images/botoes/quadrados-abc.png";
 import { loadGraphModel } from "@tensorflow/tfjs-converter";
 import Webcam from "react-webcam";
 import "./Mediapipe.css";
@@ -17,7 +21,7 @@ const Mediapipe = () => {
     const model = loadGraphModel(MODEL_URL);
     return model;
   };
-  let palavra = ""
+  let palavra = "";
   const mostFrequent = (arr, n) => {
     // Sort the array
     arr.sort();
@@ -39,7 +43,7 @@ const Mediapipe = () => {
     }
 
     return res;
-  }
+  };
   const model = loadModel();
   const cypher = {
     0: "A",
@@ -92,6 +96,7 @@ const Mediapipe = () => {
       canvasElement.width,
       canvasElement.height
     );
+
 
     if (results.multiHandLandmarks) {
       for (const landmarks of results.multiHandLandmarks) {
@@ -198,10 +203,41 @@ const Mediapipe = () => {
         />
       </div>
       <div className="exibidor">
-        <h1>
-          <strong>TRADUÇÃO</strong>
-        </h1>
-        <h2>{letra}</h2>
+        <div className="container text-center">
+          <div className="exibidor-texto">
+            <h1>
+              <strong>TRADUÇÃO</strong>
+            </h1>
+            <h2>{letra}</h2>
+          </div>
+          <div className="exibidor-botoes">
+            <div className="container-md text-center">
+              <div className="row">
+                <div className="col-sm">
+                  <img src={lixeira} onClick={() => {setLetra("")}}></img>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  <img src={apagar} onClick={() => {
+                    const novaPalavra = letra.slice(0, -1)
+                    setLetra(novaPalavra)
+                  }}></img>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  <img src={espacamento}></img>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  <img src={quadrados}></img>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
