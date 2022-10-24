@@ -97,7 +97,6 @@ const Mediapipe = () => {
       canvasElement.height
     );
 
-
     if (results.multiHandLandmarks) {
       for (const landmarks of results.multiHandLandmarks) {
         drawing.drawConnectors(canvasCtx, landmarks, mpHands.HAND_CONNECTIONS, {
@@ -203,7 +202,7 @@ const Mediapipe = () => {
         />
       </div>
       <div className="exibidor">
-        <div className="container text-center">
+        <div className="container text-center align-self-center">
           <div className="exibidor-texto">
             <h1>
               <strong>TRADUÇÃO</strong>
@@ -211,28 +210,38 @@ const Mediapipe = () => {
             <h2>{letra}</h2>
           </div>
           <div className="exibidor-botoes">
-            <div className="container-md text-center">
-              <div className="row">
-                <div className="col-sm">
-                  <img src={lixeira} onClick={() => {setLetra("")}}></img>
+            <div className="mt-4">
+              <div className="container-md text-center">
+                <div className="row justify-content-center">
+                  <div className="col-sm">
+                    <img
+                      src={lixeira}
+                      onClick={() => {
+                        setLetra("");
+                      }}
+                    ></img>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-sm">
-                  <img src={apagar} onClick={() => {
-                    const novaPalavra = letra.slice(0, -1)
-                    setLetra(novaPalavra)
-                  }}></img>
+                <div className="row justify-content-center">
+                  <div className="col-sm justify-content-center">
+                    <img
+                      src={apagar}
+                      onClick={() => {
+                        const novaPalavra = letra.slice(0, -1);
+                        setLetra(novaPalavra);
+                      }}
+                    ></img>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-sm">
-                  <img src={espacamento}></img>
+                <div className="row justify-content-center">
+                  <div className="col-sm">
+                    <img src={espacamento}></img>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-sm">
-                  <img src={quadrados}></img>
+                <div className="row justify-content-center">
+                  <div className="col-sm">
+                    <img src={quadrados}></img>
+                  </div>
                 </div>
               </div>
             </div>

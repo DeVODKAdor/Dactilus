@@ -3,6 +3,8 @@
 }
 
 .exibidor {
+    justify-content: center;
+    align-self: center;
     font-family: "Poppins";
     color: white;
     text-align: center;
