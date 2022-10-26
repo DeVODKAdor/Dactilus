@@ -107,7 +107,7 @@ const Mediapipe = () => {
             );
             if (resultados.length === maxIndex) {
               let novaLetra = cypher[mostFrequent(resultados, maxIndex)];
-              setLetra(arr => [...arr, novaLetra]);
+              setLetra((arr) => [...arr, novaLetra]);
               resultados = [];
             }
           }
@@ -181,7 +181,10 @@ const Mediapipe = () => {
         />
       </div>
       <div className="exibidor">
-        <div className="container text-center align-self-center">
+        <div className="container text-center">
+          <div className="col-12">
+            
+          </div>
           <div className="exibidor-texto">
             <h1>
               <strong>TRADUÇÃO</strong>
@@ -190,27 +193,41 @@ const Mediapipe = () => {
           </div>
           <div className="exibidor-botoes">
             <div className="mt-4">
-              <div className="container-md text-center">
+              <div className="container-md text-center mt-4">
                 <div className="row justify-content-center">
                   <div className="col-sm">
-                    <img
-                      src={lixeira}
-                      onClick={() => {
-                        setLetra([])
-                      }}
-                    ></img>
+                    <a>
+                      <img
+                        src={lixeira}
+                        onClick={() => {
+                          setLetra([]);
+                        }}
+                      ></img>
+                    </a>
                   </div>
                 </div>
                 <div className="row justify-content-center">
                   <div className="col-sm justify-content-center">
-                    <img src={apagar} onClick={() => {
-                      setLetra(letra - letra[-1])
-                    }}></img>
+                    <a>
+                      <img
+                        src={apagar}
+                        onClick={() => {
+                          setLetra((arr) => arr.slice(0, arr.length - 1));
+                        }}
+                      ></img>
+                    </a>
                   </div>
                 </div>
                 <div className="row justify-content-center">
                   <div className="col-sm">
-                    <img src={espacamento}></img>
+                    <a>
+                      <img
+                        src={espacamento}
+                        onClick={() => {
+                          setLetra((arr) => [...arr, " "]);
+                        }}
+                      ></img>
+                    </a>
                   </div>
                 </div>
                 <div className="row justify-content-center">
