@@ -181,65 +181,62 @@ const Mediapipe = () => {
         />
       </div>
       <div className="exibidor">
+        <h1>
+          <strong>TRADUÇÃO</strong>
+        </h1>
         <div className="container text-center">
-          <div className="col-12">
-            
-          </div>
           <div className="exibidor-texto">
-            <h1>
-              <strong>TRADUÇÃO</strong>
-            </h1>
-            <h2>{letra}</h2>
+            <div className="container-lg">
+              <h2>{letra}</h2>
+            </div>
           </div>
           <div className="exibidor-botoes">
-            <div className="mt-4">
-              <div className="container-md text-center mt-4">
-                <div className="row justify-content-center">
-                  <div className="col-sm">
-                    <a>
-                      <img
-                        src={lixeira}
-                        onClick={() => {
-                          setLetra([]);
-                        }}
-                      ></img>
-                    </a>
-                  </div>
-                </div>
-                <div className="row justify-content-center">
-                  <div className="col-sm justify-content-center">
-                    <a>
-                      <img
-                        src={apagar}
-                        onClick={() => {
-                          setLetra((arr) => arr.slice(0, arr.length - 1));
-                        }}
-                      ></img>
-                    </a>
-                  </div>
-                </div>
-                <div className="row justify-content-center">
-                  <div className="col-sm">
-                    <a>
-                      <img
-                        src={espacamento}
-                        onClick={() => {
-                          setLetra((arr) => [...arr, " "]);
-                        }}
-                      ></img>
-                    </a>
-                  </div>
-                </div>
-                <div className="row justify-content-center">
-                  <a
-                    href="https://www.libras.com.br/ct__images/artigos/alfabeto-manual/alfabeto-manual.png"
-                    target={"_blank"}
-                  >
-                    <div className="col-sm">
-                      <img src={quadrados}></img>
-                    </div>
+            <div className="container-sm text-center pl-4">
+              <div className="row justify-content-center">
+                <div className="col">
+                  <a>
+                    <img
+                      src={lixeira}
+                      onClick={() => {
+                        setLetra([]);
+                      }}
+                    ></img>
                   </a>
                 </div>
+              </div>
+              <div className="row justify-content-center">
+                <div className="col justify-content-center">
+                  <a>
+                    <img
+                      src={apagar}
+                      onClick={() => {
+                        setLetra((arr) => arr.slice(0, arr.length - 1));
+                      }}
+                    ></img>
+                  </a>
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                <div className="col">
+                  <a>
+                    <img
+                      src={espacamento}
+                      onClick={() => {
+                        setLetra((arr) => [...arr, " "]);
+                      }}
+                    ></img>
+                  </a>
+                </div>
+              </div>
+              <div className="row justify-content-center">
+                <a
+                  href="https://www.libras.com.br/ct__images/artigos/alfabeto-manual/alfabeto-manual.png"
+                  target={"_blank"}
+                >
+                  <div className="col">
+                    <img src={quadrados}></img>
+                  </div>
+                </a>
               </div>
             </div>
           </div>

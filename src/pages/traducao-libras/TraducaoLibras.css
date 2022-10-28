@@ -8,3 +8,11 @@
 .display {
     height: 100%;
 }
+
+.exibidor-texto {
+    text-align: center;
+}
+
+.exibidor-botoes {
+    margin-left: 50%;
+}

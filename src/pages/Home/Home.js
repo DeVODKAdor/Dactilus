@@ -11,7 +11,6 @@ import Arinaldo from "../../assets/images/equipe/arinaldo.png";
 import Davi from "../../assets/images/equipe/davi.png";
 import Flavia from "../../assets/images/equipe/flavia.png";
 import Navbar from "../../components/navbar/Navbar";
-import Popup from "../../components/popup/Popup";
 import "./Home.css"
 
 function Home() {
