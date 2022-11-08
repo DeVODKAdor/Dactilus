@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Popup from "../popup/Popup";
-import arrow from "../../assets/images/arrow.png";
 import logo from "../../assets/images/dactiluslogo.png";
 
 function Navbar() {
-  const [isVisible, setIsVisible] = useState(false);
-  const PopupDisplay = () => {
-    setIsVisible(current => !current)
-  };
   return (
     <>
       <nav className="navbar">
@@ -23,9 +17,8 @@ function Navbar() {
           <Link to="/dicionario" className="navbar-dicionario">
             Dicionário
           </Link>
-          <Link className="navbar-traduzir" onClick={PopupDisplay}>
+          <Link to="/traducao-libras" className="navbar-traduzir">
             Traduzir
-            <img src={arrow} className="arrow"></img>
           </Link>
           <Link to="/chat" className="navbar-chat">
             Chat
@@ -35,7 +28,6 @@ function Navbar() {
           </Link>
         </div>
       </nav>
-      <Popup visivel={isVisible ? 'visible' : 'hidden'}/>
     </>
   );
 }

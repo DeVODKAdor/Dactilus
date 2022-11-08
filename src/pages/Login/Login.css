@@ -1,77 +1,54 @@
 @font-face {
-    font-family: "Fredoka One";
-    src: url("../../assets/fonts/fredokaOne/FredokaOne-Regular.ttf");
+  font-family: "Fredoka One";
+  src: url("../../assets/fonts/fredokaOne/FredokaOne-Regular.ttf");
 }
 
-
-.boas-vindas {
-    text-align: center;
-    margin: 2%;
-    font-family: 'Fredoka One';
-    font-size: 96px;
+body {
+  background-image: url("../../assets/images/login/Ellipse.png");
+  background-repeat: no-repeat;
 }
 
-.azulzao {
-    margin: 0;
-    border-radius: 80%;
-    left: -30%;
-    top: -10%;
-    position: absolute;
-    height: 120%;
-    width: 63%;
-    background-color: #79BDEF;
+p {
+  font-family: "Fredoka One";
 }
 
-.login {
-    display: grid;
-    justify-content: flex-end;
-    margin-right: 30%;
-}
-
-#login-texto {
-    font-family: "Fredoka One";
+.naosei {
     font-size: 64px;
     color: #79BDEF;
-    
 }
 
-#user {
-    position: absolute;
-    left: 1075px;
-    top: 425px;
+p.text-center.mt-4 {
+  font-size: 96px;
 }
 
-#cadeado {
-    position: absolute;
-    left: 1080px;
-    top: 520px;
+.texto.cima {
+  font-size: 36px;
 }
 
-#esqueceu {
-    text-align: center;
-    font-family: "Poppins";
-    font-size: 20px;
+.texto {
+  color: #fafafa;
 }
 
-.campo {
-    width: 200%;
-    padding-left: 20%;
-    height: 64px;
-    border-radius: 30px;
-    margin: 5%;
-    font-size: 24px;
-    border: none;
-    background-color: #EDE7E7;
+.texto.baixo {
+  font-family: "Poppins";
+  font-size: 24px;
 }
 
-#botao-login {
-    margin-left: 40%;
-    margin-top: 20%;
-    width: 262px;
-    font-family: "Poppins";
-    color: #EDE7E7;
-    height: 64px;
-    border-radius: 50px;
+.btn.btn-primary {
     background-color: #79BDEF;
-    border: none;
+    border-color: #79BDEF;
+    width: 25%;
+}
+
+.btn.btn-outline-primary {
+    background-image: url("../../assets/images/form/google.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 3rem;
+    width: 3rem;
+}
+
+form {
+  margin-left: 20%;
+  margin-right: 20%;
 }
