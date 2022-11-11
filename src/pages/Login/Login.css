@@ -3,14 +3,12 @@
   src: url("../../assets/fonts/fredokaOne/FredokaOne-Regular.ttf");
 }
 
-body {
+.container-fluid.text-center.fundo-login {
   background-image: url("../../assets/images/login/Ellipse.png");
   background-repeat: no-repeat;
+  height: 100%;
 }
 
-p {
-  font-family: "Fredoka One";
-}
 
 .naosei {
     font-size: 64px;

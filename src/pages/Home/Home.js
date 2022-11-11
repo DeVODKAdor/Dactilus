@@ -6,21 +6,47 @@ import Tecnologia from "../../components/tecnologia/Tecnologia";
 import python from "../../assets/images/tecnologias/python.png";
 import mediapipe from "../../assets/images/tecnologias/mediapipe.png";
 import tensorflow from "../../assets/images/tecnologias/tensorflow.png";
-import Integrante from "../../components/integrante/Integrante";
-import Arinaldo from "../../assets/images/equipe/arinaldo.png";
-import Davi from "../../assets/images/equipe/davi.png";
-import Flavia from "../../assets/images/equipe/flavia.png";
+import Integrantes from "../../components/integrante/Integrante";
 import Navbar from "../../components/navbar/Navbar";
-import "./Home.css"
+import { UncontrolledCarousel } from "reactstrap";
+import "./Home.css";
 
 function Home() {
-  const exemplo =
-    "Lorem ipsum ullamcorper suspendisse luctus fuscevestibulum velit bibendum sem elementum maecenas class, dolor maecenas ";
+  const descricaoMediapipe = `MediaPipe é uma biblioteca desenvolvida pelo Google. Através dessa biblioteca
+    é possível realizar diversas atividades: Segmentação de selfie, Malha facial,
+    rastreamento da mão detecção e rastreamento de objetos, detecção de rosto, entre outras
+    atividades.`;
+  const descricaoPython = `Python é uma linguagem de programação, utilizada para captar e reconhecer os
+  sinais de libras realizado pelo usuário do software.`;
+  const descricaoTensorflow = `TensorFlow é uma plataforma de código aberto para aprendizagem de máquina.
+  Utilizamos essa plataforma para criar nossas próprias redes neurais. Empresas grandes
+  como Google, Coca-Cola e Intel usam o TensorFlow.`;
   return (
     <>
       <Navbar />
-      <Carrossel />
-      <Titulo texto="PROJETO DACTILUS" />
+      <UncontrolledCarousel
+        items={[
+          {
+            altText: "Slide 1",
+            caption: "Slide 1",
+            key: 1,
+            src: "https://picsum.photos/id/123/1200/600",
+          },
+          {
+            altText: "Slide 2",
+            caption: "Slide 2",
+            key: 2,
+            src: "https://picsum.photos/id/456/1200/600",
+          },
+          {
+            altText: "Slide 3",
+            caption: "Slide 3",
+            key: 3,
+            src: "https://picsum.photos/id/678/1200/600",
+          },
+        ]}
+      />
+      <Titulo texto="PROJETO DACTILUS"/>
       <div className="container">
         <Card
           numero="1"
@@ -37,27 +63,21 @@ function Home() {
       </div>
       <Titulo texto="TECNOLOGIAS UTILIZADAS" />
       <div className="container">
-        <Tecnologia imagem={python} nome="Python" descricao={exemplo} />
-        <Tecnologia imagem={tensorflow} nome="Tensorflow" descricao={exemplo} />
-        <Tecnologia imagem={mediapipe} nome="Mediapipe" descricao={exemplo} />
+        <Tecnologia imagem={python} nome="Python" descricao={descricaoPython} />
+        <Tecnologia
+          imagem={tensorflow}
+          nome="Tensorflow"
+          descricao={descricaoTensorflow}
+        />
+        <Tecnologia
+          imagem={mediapipe}
+          nome="Mediapipe"
+          descricao={descricaoMediapipe}
+        />
       </div>
       <Titulo texto="SOBRE A EQUIPE" />
       <div className="container">
-        <Integrante
-          membro={Flavia}
-          nome="Flávia Silva"
-          descricao="A designer, responsável por toda a estética do projeto"
-        />
-        <Integrante
-          membro={Davi}
-          nome="Davi Moreira"
-          descricao="O programador, responsável por toda a lógica do projeto"
-        />
-        <Integrante
-          membro={Arinaldo}
-          nome="Arinaldo Aquino"
-          descricao="O analista, responsável por toda a pesquisa e documentação do projeto"
-        />
+        <Integrantes />
       </div>
     </>
   );

@@ -24,7 +24,7 @@ function Register() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        
+        // history.push("/")
         // ...
       })
       .catch((error) => {

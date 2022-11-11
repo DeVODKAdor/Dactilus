@@ -3,6 +3,7 @@
     src: url("../../assets/fonts/inter/Inter-Regular.ttf");
 }
 .titulo {
+    margin: 10%;
     -webkit-text-stroke: 3px #11A0F0;
     font-family: "Inter";
     color: #79bdef;

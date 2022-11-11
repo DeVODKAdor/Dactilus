@@ -3,7 +3,7 @@ import "./Tecnologia.css";
 
 function Tecnologia(props) {
   return (
-    <div className="tecnologia">
+    <div className="tecnologia col-4 m-0">
       <div className="img-container">
         <img src={props.imagem} className="imagem"></img>
       </div>

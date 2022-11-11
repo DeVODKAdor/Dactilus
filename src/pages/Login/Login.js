@@ -4,7 +4,7 @@ import "./Login.css";
 
 function Login() {
   return (
-    <div className="container-fluid text-center">
+    <div className="container-fluid text-center fundo-login">
       <div className="row justify-content-between">
         <div className="col-12 p-2">
           <p className="text-center mt-4">Projeto Dactilus</p>
