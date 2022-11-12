@@ -6,13 +6,11 @@
 .container-fluid.text-center.fundo-login {
   background-image: url("../../assets/images/login/Ellipse.png");
   background-repeat: no-repeat;
-  height: 100%;
 }
 
-
 .naosei {
-    font-size: 64px;
-    color: #79BDEF;
+  font-size: 64px;
+  color: #79bdef;
 }
 
 p.text-center.mt-4 {
@@ -33,17 +31,17 @@ p.text-center.mt-4 {
 }
 
 .btn.btn-primary {
-    background-color: #79BDEF;
-    border-color: #79BDEF;
-    width: 25%;
+  background-color: #79bdef;
+  border-color: #79bdef;
+  width: 25%;
 }
 
 .btn.btn-outline-primary {
-    background-image: url("../../assets/images/form/google.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 3rem;
-    width: 3rem;
+  background-image: url("../../assets/images/form/google.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 3rem;
+  width: 3rem;
 }
 
 form {
