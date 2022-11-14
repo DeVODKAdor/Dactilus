@@ -1,30 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import AuthCard from "../authCard/AuthCard.js"
 import logo from "../../assets/images/dactiluslogo.png";
 import { useAuth } from "../../contexts/AuthContext";
 
 function Navbar() {
-  const { currentUser, logout } = useAuth();
-  const [path, setPath] = useState("/login")
-  const [button, setButton] = useState(<Link to="/login" className="navbar-login">Login</Link>)
-  const navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate("/")
-      setButton(<Link to="/login" className="navbar-login">Login</Link>)
-    } catch {
-      console.log("Falha ao sair");
-    }
-  }
-  useEffect(() => {
-    if (currentUser) {
-      setButton(<Link type="button" onClick={handleLogout}>Sair</Link>)
-      setPath("/chat")
-    }
-  }, [currentUser])
-
+  const { currentUser } = useAuth();
 
   return (
     <>
@@ -42,10 +24,10 @@ function Navbar() {
           <Link to="/traducao-libras" className="navbar-traduzir">
             Traduzir
           </Link>
-          <Link to={path} className="navbar-chat">
+          <Link to={currentUser ? "/chat" : "/login"} className="navbar-chat">
             Chat
           </Link>
-          {button}
+          {currentUser ? <AuthCard avatarSrc={currentUser.photoURL} /> : <Link to="/login" className="navbar-login">Login</Link>}
         </div>
       </nav>
     </>

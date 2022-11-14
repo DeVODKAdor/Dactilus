@@ -10,7 +10,19 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { login } = useAuth();
+  const { signUpWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const handleGoogle = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      await signUpWithGoogle();
+      navigate("/")
+    } catch {
+      setError("Algum erro aconteceu.");
+      setLoading(false);
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -73,8 +85,11 @@ function Login() {
               ENTRAR
             </button>
             <p className="mb-3">ou</p>
-            <button className="btn btn-outline-primary"></button>
           </form>
+          <button
+            className="btn btn-outline-primary"
+            onClick={handleGoogle}
+          ></button>
         </div>
       </div>
     </div>
