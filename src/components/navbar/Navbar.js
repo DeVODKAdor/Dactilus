@@ -27,7 +27,7 @@ function Navbar() {
           <Link to="/" className="navbar-home">
             Home
           </Link>
-          <Link to="/dicionario" className="navbar-dicionario">
+          <Link className="navbar-dicionario">
             Dicionário
           </Link>
           <Link to="/traducao-libras" className="navbar-traduzir">
