@@ -10,6 +10,9 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import Navbar from "../../components/navbar/Navbar";
 import { db } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
+import { Divider, IconButton, TextField, Typography } from "@mui/material";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import VLibras from "@djpfs/react-vlibras";
 import "./Chat.css";
 
 export default function Chat() {
@@ -48,21 +51,38 @@ export default function Chat() {
   return (
     <>
       <Navbar />
-      <main>
-        {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
-        <div ref={dummy}></div>
-      </main>
-      <form onSubmit={sendMessage} className="chat-form">
-        <input
-          value={formValue}
-          className="chat-input"
-          onChange={(e) => setFormValue(e.target.value)}
+      <div className="container">
+        <div className="perfis text-center">
+          <Typography variant="h3" gutterBottom>Online</Typography>
+        </div>
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{
+            backgroundColor: "#11A0F0",
+          }}
         />
-        <button disabled={formValue === ""} type="submit" className="chat-button">
-          Enviar
-        </button>
-      </form>
+        <main>
+          {messages &&
+            messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          <div ref={dummy}></div>
+        </main>
+        <form onSubmit={sendMessage} className="chat-form mb-3">
+          <TextField
+            id="outlined-multiline-flexible"
+            label="Mensagem"
+            multiline
+            fullWidth
+            maxRows={4}
+            value={formValue}
+            onChange={(e) => setFormValue(e.target.value)}
+          />
+          <IconButton type="submit">
+            <SendRoundedIcon />
+          </IconButton>
+        </form>
+      </div>
+      <VLibras />
     </>
   );
 }

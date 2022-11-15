@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { login, currentUser } = useAuth();
+  const { login } = useAuth();
   const { signUpWithGoogle } = useAuth();
   const navigate = useNavigate();
   const handleGoogle = async (e) => {
