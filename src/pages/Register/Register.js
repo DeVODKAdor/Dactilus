@@ -1,4 +1,5 @@
 import { Alert, CircularProgress } from "@mui/material";
+import { signInWithPopup } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,19 +10,31 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { signUp } = useAuth();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     try {
       await signUp(email, password);
+      navigate("/", { state: {newUsername: username} });
+    } catch {
+      setError("Falha ao cadastrar");
+      setLoading(false);
+    }
+  };
+
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await signInWithPopup();
       navigate("/");
     } catch {
-      setError("Falha ao cadastrar")
-      setLoading(false)
+      setError("Algum erro aconteceu");
+      setLoading(false);
     }
   };
 
@@ -106,7 +119,10 @@ function Register() {
               CADASTRAR
             </button>
             <p className="mb-3">ou</p>
-            <button className="btn btn-outline-primary"></button>
+            <button
+              className="btn btn-outline-primary"
+              onClick={handleGoogle}
+            ></button>
           </form>
         </div>
       </div>

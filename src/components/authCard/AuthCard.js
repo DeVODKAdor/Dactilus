@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IconButton, Menu, MenuItem, Avatar } from "@mui/material";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase/firebase";
 
 const AuthCard = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -20,7 +21,7 @@ const AuthCard = (props) => {
   const handleLogout = async () => {
     try {
       handleClose();
-      await logout();
+      await logout(auth);
       navigate("/");
     } catch {
       console.log("Falha ao sair");

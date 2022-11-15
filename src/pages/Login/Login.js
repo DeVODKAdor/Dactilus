@@ -3,26 +3,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "./Login.css";
 import { Alert, CircularProgress } from "@mui/material";
+import { updateProfile } from "firebase/auth";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { login } = useAuth();
+  const { login, currentUser } = useAuth();
   const { signUpWithGoogle } = useAuth();
   const navigate = useNavigate();
-  const handleGoogle = async () => {
+  const handleGoogle = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setError("");
     try {
       await signUpWithGoogle();
-      navigate("/")
+      navigate("/");
     } catch {
       setError("Algum erro aconteceu.");
       setLoading(false);
     }
-  }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);

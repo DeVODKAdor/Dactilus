@@ -4,6 +4,8 @@
 }
 
 .container-fluid.text-center.fundo-login {
+  height: 100vh;
+  overflow: hidden;
   background-image: url("../../assets/images/login/Ellipse.png");
   background-repeat: no-repeat;
 }

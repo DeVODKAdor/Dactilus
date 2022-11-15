@@ -1,5 +1,4 @@
 import React from "react";
-import Carrossel from "../../components/carrossel/Carrossel";
 import Titulo from "../../components/titulos/Titulo";
 import Card from "../../components/card/Card";
 import Tecnologia from "../../components/tecnologia/Tecnologia";
@@ -46,7 +45,7 @@ function Home() {
           },
         ]}
       />
-      <Titulo texto="PROJETO DACTILUS"/>
+      <Titulo texto="PROJETO DACTILUS" />
       <div className="container">
         <Card
           numero="1"
