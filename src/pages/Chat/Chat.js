@@ -24,11 +24,11 @@ export default function Chat() {
   const { currentUser } = useAuth();
 
   const ChatMessage = (props) => {
-    const { text, uid } = props.message;
+    const { text, uid, photoURL } = props.message;
     const messageClass = uid === currentUser.uid ? "sent" : "received";
     return (
       <div className={`message ${messageClass}`}>
-        <img className="pfp" src={currentUser.photoURL} />
+        <img className="pfp" src={photoURL} />
         <p className="mensagem">{text}</p>
       </div>
     );
@@ -53,7 +53,9 @@ export default function Chat() {
       <Navbar />
       <div className="container">
         <div className="perfis text-center">
-          <Typography variant="h3" gutterBottom>Online</Typography>
+          <Typography variant="h3" gutterBottom>
+            Online
+          </Typography>
         </div>
         <Divider
           orientation="vertical"

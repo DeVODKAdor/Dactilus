@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IconButton, Menu, MenuItem, Avatar } from "@mui/material";
+import { IconButton, Menu, MenuItem, Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
@@ -40,6 +40,9 @@ const AuthCard = (props) => {
       >
         <Avatar src={props.avatarSrc} />
       </IconButton>
+      <Typography>
+        {props.displayName}
+      </Typography>
       <Menu
         id="menu-appbar"
         anchorEl={anchorEl}

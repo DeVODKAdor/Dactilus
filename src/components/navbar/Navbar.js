@@ -27,9 +27,7 @@ function Navbar() {
           <Link to="/" className="navbar-home">
             Home
           </Link>
-          <Link className="navbar-dicionario">
-            Dicionário
-          </Link>
+          <Link className="navbar-dicionario">Dicionário</Link>
           <Link to="/traducao-libras" className="navbar-traduzir">
             Traduzir
           </Link>
@@ -37,7 +35,10 @@ function Navbar() {
             Chat
           </Link>
           {currentUser ? (
-            <AuthCard avatarSrc={currentUser.photoURL} />
+            <AuthCard
+              avatarSrc={currentUser.photoURL}
+              displayName={currentUser.displayName}
+            />
           ) : (
             <Link to="/login" className="navbar-login">
               Login
