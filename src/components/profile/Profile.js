@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export default function Profile() {
+export default function Profile(props) {
+  const { user, photoURL } = props.userName;
   return (
-    <div>Profile</div>
+    <div className="container profile-card">
+      <div>{}</div>
+      <div></div>
+    </div>
   )
 }

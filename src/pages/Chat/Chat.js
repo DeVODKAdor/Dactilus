@@ -11,14 +11,18 @@ import Navbar from "../../components/navbar/Navbar";
 import { db } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
 import { Divider, IconButton, TextField, Typography } from "@mui/material";
+import Profile from "../../components/profile/Profile";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import VLibras from "@djpfs/react-vlibras";
 import "./Chat.css";
 
 export default function Chat() {
   const messagesRef = collection(db, "mensagens");
+  const usersRef = collection(db, "online");
   const request = query(messagesRef, orderBy("createdAt", "asc"));
+  const usersRequest = query(usersRef, orderBy("user", "asc"));
   const [messages] = useCollectionData(request, { idField: "id" });
+  const [users] = useCollectionData(usersRequest, { idField: "id" });
   const [formValue, setFormValue] = useState("");
   const dummy = useRef();
   const { currentUser } = useAuth();
@@ -56,6 +60,7 @@ export default function Chat() {
           <Typography variant="h3" gutterBottom>
             Online
           </Typography>
+          {users && users.map((user) => <Profile key={user.id} userName={user}/>)}
         </div>
         <Divider
           orientation="vertical"

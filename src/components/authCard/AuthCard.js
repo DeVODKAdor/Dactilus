@@ -3,6 +3,7 @@ import { IconButton, Menu, MenuItem, Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
+import "./AuthCard.css"
 
 const AuthCard = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -29,7 +30,7 @@ const AuthCard = (props) => {
   };
 
   return (
-    <div>
+    <div className="container-sm account">
       <IconButton
         size="large"
         aria-label="account of current user"
