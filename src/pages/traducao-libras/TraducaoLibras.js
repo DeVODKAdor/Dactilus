@@ -5,7 +5,7 @@ import Mediapipe from "../../components/webcam/Mediapipe";
 
 function TraducaoLibras() {
   const texto =
-    "Posicione-se entre 10 a 80cm em frente à câmera num lugar bem iluminado e realize o gesto que gostaria de traduzir. \n Lembre-se de colocar sua mão de forma que ocupe quase todo o espaço da câmera";
+    "Posicione-se entre 10 a 80cm em frente à câmera num lugar bem iluminado e realize o gesto que gostaria de traduzir. \n Lembre-se de colocar sua mão DIREITA de forma que ocupe quase todo o espaço da câmera";
   return (
     <>
       <Navbar />

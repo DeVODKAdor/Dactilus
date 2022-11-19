@@ -182,7 +182,7 @@ const Mediapipe = () => {
         />
       </div>
       <div className="col exibidor">
-        <h1>
+        <h1 className="p-3">
           <strong>TRADUÇÃO</strong>
         </h1>
         <div className="container text-center placa">
