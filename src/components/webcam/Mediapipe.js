@@ -11,6 +11,7 @@ import Webcam from "react-webcam";
 import mostFrequent from "../../utils/mostFrequent";
 import "./Mediapipe.css";
 import { useEffect, useRef, useState } from "react";
+import { IconButton, Tooltip } from "@mui/material";
 
 const Mediapipe = () => {
   const webcamRef = useRef(null);
@@ -148,7 +149,7 @@ const Mediapipe = () => {
 
   return (
     <div className="container">
-      <div>
+      <div className="col m-5">
         <Webcam
           ref={webcamRef}
           mirrored={true}
@@ -180,11 +181,11 @@ const Mediapipe = () => {
           }}
         />
       </div>
-      <div className="exibidor">
+      <div className="col exibidor">
         <h1>
           <strong>TRADUÇÃO</strong>
         </h1>
-        <div className="container text-center">
+        <div className="container text-center placa">
           <div className="exibidor-texto">
             <div className="container-lg">
               <h2>{letra}</h2>
@@ -194,49 +195,59 @@ const Mediapipe = () => {
             <div className="container-sm text-center pl-4">
               <div className="row justify-content-center">
                 <div className="col">
-                  <a>
-                    <img
-                      src={lixeira}
-                      onClick={() => {
-                        setLetra([]);
-                      }}
-                    ></img>
-                  </a>
+                  <Tooltip title="Apagar tudo">
+                    <IconButton>
+                      <img
+                        src={lixeira}
+                        onClick={() => {
+                          setLetra([]);
+                        }}
+                      ></img>
+                    </IconButton>
+                  </Tooltip>
                 </div>
               </div>
               <div className="row justify-content-center">
                 <div className="col justify-content-center">
-                  <a>
-                    <img
-                      src={apagar}
-                      onClick={() => {
-                        setLetra((arr) => arr.slice(0, arr.length - 1));
-                      }}
-                    ></img>
-                  </a>
+                  <Tooltip title="Apagar">
+                    <IconButton>
+                      <img
+                        src={apagar}
+                        onClick={() => {
+                          setLetra((arr) => arr.slice(0, arr.length - 1));
+                        }}
+                      ></img>
+                    </IconButton>
+                  </Tooltip>
                 </div>
               </div>
               <div className="row justify-content-center">
                 <div className="col">
-                  <a>
-                    <img
-                      src={espacamento}
-                      onClick={() => {
-                        setLetra((arr) => [...arr, " "]);
-                      }}
-                    ></img>
-                  </a>
+                  <Tooltip title="Espaço">
+                    <IconButton>
+                      <img
+                        src={espacamento}
+                        onClick={() => {
+                          setLetra((arr) => [...arr, " "]);
+                        }}
+                      ></img>
+                    </IconButton>
+                  </Tooltip>
                 </div>
               </div>
               <div className="row justify-content-center">
-                <a
-                  href="https://www.libras.com.br/ct__images/artigos/alfabeto-manual/alfabeto-manual.png"
-                  target={"_blank"}
-                >
-                  <div className="col">
-                    <img src={quadrados}></img>
-                  </div>
-                </a>
+                <Tooltip title="Alfabeto Libras">
+                  <IconButton>
+                    <a
+                      href="https://www.libras.com.br/ct__images/artigos/alfabeto-manual/alfabeto-manual.png"
+                      target={"_blank"}
+                    >
+                      <div className="col">
+                        <img src={quadrados}></img>
+                      </div>
+                    </a>
+                  </IconButton>
+                </Tooltip>
               </div>
             </div>
           </div>

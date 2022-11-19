@@ -9,11 +9,15 @@
     color: white;
     text-align: center;
     border-radius: 40px;
-    width: 645px;
-    height: 380px;
+    width: 700px;
+    height: 480px;
     background-color: #79BDEF;
 }
 
 .exibidor-botoes {
     margin-top: 45px;
+}
+
+.container.text-center.placa {
+    max-width: 600px;
 }
