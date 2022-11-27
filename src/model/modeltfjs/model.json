@@ -63,6 +63,9 @@
         "name": "ConstantFolding/StatefulPartitionedCall/sequential/dense_features/numeric/truediv_recip",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_FLOAT",
@@ -74,9 +77,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_FLOAT"
           }
         }
       },
@@ -84,6 +84,9 @@
         "name": "StatefulPartitionedCall/sequential/dense_features/numeric/strided_slice/stack",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_INT32"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_INT32",
@@ -95,9 +98,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_INT32"
           }
         }
       },
@@ -105,6 +105,9 @@
         "name": "StatefulPartitionedCall/sequential/dense_features/numeric/strided_slice/stack_1",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_INT32"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_INT32",
@@ -116,9 +119,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_INT32"
           }
         }
       },
@@ -162,6 +162,9 @@
         "name": "StatefulPartitionedCall/sequential/dense/MatMul/ReadVariableOp",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_FLOAT",
@@ -176,9 +179,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_FLOAT"
           }
         }
       },
@@ -186,6 +186,9 @@
         "name": "StatefulPartitionedCall/sequential/dense/BiasAdd/ReadVariableOp",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_FLOAT",
@@ -197,9 +200,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_FLOAT"
           }
         }
       },
@@ -207,6 +207,9 @@
         "name": "StatefulPartitionedCall/sequential/dense_1/MatMul/ReadVariableOp",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_FLOAT",
@@ -221,9 +224,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_FLOAT"
           }
         }
       },
@@ -342,6 +342,9 @@
         "name": "StatefulPartitionedCall/sequential/dense_4/MatMul/ReadVariableOp",
         "op": "Const",
         "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
           "value": {
             "tensor": {
               "dtype": "DT_FLOAT",
@@ -356,9 +359,6 @@
                 ]
               }
             }
-          },
-          "dtype": {
-            "type": "DT_FLOAT"
           }
         }
       },
@@ -366,9 +366,6 @@
         "name": "StatefulPartitionedCall/sequential/dense_4/BiasAdd/ReadVariableOp",
         "op": "Const",
         "attr": {
-          "dtype": {
-            "type": "DT_FLOAT"
-          },
           "value": {
             "tensor": {
               "dtype": "DT_FLOAT",
@@ -380,6 +377,9 @@
                 ]
               }
             }
+          },
+          "dtype": {
+            "type": "DT_FLOAT"
           }
         }
       },
@@ -387,9 +387,6 @@
         "name": "numeric",
         "op": "Placeholder",
         "attr": {
-          "dtype": {
-            "type": "DT_FLOAT"
-          },
           "shape": {
             "shape": {
               "dim": [
@@ -401,6 +398,9 @@
                 }
               ]
             }
+          },
+          "dtype": {
+            "type": "DT_FLOAT"
           }
         }
       },
@@ -437,11 +437,11 @@
           "StatefulPartitionedCall/sequential/dense_features/numeric/truediv"
         ],
         "attr": {
-          "T": {
-            "type": "DT_FLOAT"
-          },
           "out_type": {
             "type": "DT_INT32"
+          },
+          "T": {
+            "type": "DT_FLOAT"
           }
         }
       },
@@ -455,19 +455,10 @@
           "StatefulPartitionedCall/sequential/dense_features/numeric/strided_slice/stack_2"
         ],
         "attr": {
-          "ellipsis_mask": {
-            "i": "0"
-          },
           "Index": {
             "type": "DT_INT32"
           },
-          "shrink_axis_mask": {
-            "i": "1"
-          },
-          "begin_mask": {
-            "i": "0"
-          },
-          "end_mask": {
+          "ellipsis_mask": {
             "i": "0"
           },
           "new_axis_mask": {
@@ -475,6 +466,15 @@
           },
           "T": {
             "type": "DT_INT32"
+          },
+          "end_mask": {
+            "i": "0"
+          },
+          "shrink_axis_mask": {
+            "i": "1"
+          },
+          "begin_mask": {
+            "i": "0"
           }
         }
       },
@@ -486,11 +486,11 @@
           "StatefulPartitionedCall/sequential/dense_features/numeric/Reshape/shape/1"
         ],
         "attr": {
-          "axis": {
-            "i": "0"
-          },
           "T": {
             "type": "DT_INT32"
+          },
+          "axis": {
+            "i": "0"
           },
           "N": {
             "i": "2"
@@ -505,11 +505,11 @@
           "StatefulPartitionedCall/sequential/dense_features/numeric/Reshape/shape"
         ],
         "attr": {
-          "Tshape": {
-            "type": "DT_INT32"
-          },
           "T": {
             "type": "DT_FLOAT"
+          },
+          "Tshape": {
+            "type": "DT_INT32"
           }
         }
       },
@@ -523,25 +523,28 @@
         ],
         "device": "/device:CPU:0",
         "attr": {
-          "transpose_b": {
-            "b": false
-          },
           "T": {
             "type": "DT_FLOAT"
-          },
-          "fused_ops": {
-            "list": {
-              "s": ["Qmlhc0FkZA==", "UmVsdQ=="]
-            }
           },
           "epsilon": {
             "f": 0.0
           },
-          "num_args": {
-            "i": "1"
+          "transpose_b": {
+            "b": false
           },
           "transpose_a": {
             "b": false
+          },
+          "fused_ops": {
+            "list": {
+              "s": [
+                "Qmlhc0FkZA==",
+                "UmVsdQ=="
+              ]
+            }
+          },
+          "num_args": {
+            "i": "1"
           }
         }
       },
@@ -555,6 +558,20 @@
         ],
         "device": "/device:CPU:0",
         "attr": {
+          "transpose_b": {
+            "b": false
+          },
+          "fused_ops": {
+            "list": {
+              "s": [
+                "Qmlhc0FkZA==",
+                "UmVsdQ=="
+              ]
+            }
+          },
+          "T": {
+            "type": "DT_FLOAT"
+          },
           "epsilon": {
             "f": 0.0
           },
@@ -563,17 +580,6 @@
           },
           "num_args": {
             "i": "1"
-          },
-          "fused_ops": {
-            "list": {
-              "s": ["Qmlhc0FkZA==", "UmVsdQ=="]
-            }
-          },
-          "transpose_b": {
-            "b": false
-          },
-          "T": {
-            "type": "DT_FLOAT"
           }
         }
       },
@@ -587,25 +593,28 @@
         ],
         "device": "/device:CPU:0",
         "attr": {
+          "num_args": {
+            "i": "1"
+          },
+          "transpose_a": {
+            "b": false
+          },
+          "fused_ops": {
+            "list": {
+              "s": [
+                "Qmlhc0FkZA==",
+                "UmVsdQ=="
+              ]
+            }
+          },
+          "transpose_b": {
+            "b": false
+          },
           "epsilon": {
             "f": 0.0
           },
           "T": {
             "type": "DT_FLOAT"
-          },
-          "transpose_a": {
-            "b": false
-          },
-          "transpose_b": {
-            "b": false
-          },
-          "fused_ops": {
-            "list": {
-              "s": ["Qmlhc0FkZA==", "UmVsdQ=="]
-            }
-          },
-          "num_args": {
-            "i": "1"
           }
         }
       },
@@ -619,25 +628,28 @@
         ],
         "device": "/device:CPU:0",
         "attr": {
-          "T": {
-            "type": "DT_FLOAT"
-          },
           "transpose_b": {
             "b": false
           },
-          "fused_ops": {
-            "list": {
-              "s": ["Qmlhc0FkZA==", "UmVsdQ=="]
-            }
+          "T": {
+            "type": "DT_FLOAT"
           },
           "epsilon": {
             "f": 0.0
           },
+          "num_args": {
+            "i": "1"
+          },
           "transpose_a": {
             "b": false
           },
-          "num_args": {
-            "i": "1"
+          "fused_ops": {
+            "list": {
+              "s": [
+                "Qmlhc0FkZA==",
+                "UmVsdQ=="
+              ]
+            }
           }
         }
       },
@@ -651,18 +663,17 @@
         ],
         "device": "/device:CPU:0",
         "attr": {
-          "num_args": {
-            "i": "1"
-          },
           "T": {
             "type": "DT_FLOAT"
           },
-          "epsilon": {
-            "f": 0.0
+          "num_args": {
+            "i": "1"
           },
           "fused_ops": {
             "list": {
-              "s": ["Qmlhc0FkZA=="]
+              "s": [
+                "Qmlhc0FkZA=="
+              ]
             }
           },
           "transpose_a": {
@@ -670,13 +681,18 @@
           },
           "transpose_b": {
             "b": false
+          },
+          "epsilon": {
+            "f": 0.0
           }
         }
       },
       {
         "name": "StatefulPartitionedCall/sequential/dense_4/Softmax",
         "op": "Softmax",
-        "input": ["StatefulPartitionedCall/sequential/dense_4/BiasAdd"],
+        "input": [
+          "StatefulPartitionedCall/sequential/dense_4/BiasAdd"
+        ],
         "attr": {
           "T": {
             "type": "DT_FLOAT"
@@ -686,7 +702,9 @@
       {
         "name": "Identity",
         "op": "Identity",
-        "input": ["StatefulPartitionedCall/sequential/dense_4/Softmax"],
+        "input": [
+          "StatefulPartitionedCall/sequential/dense_4/Softmax"
+        ],
         "attr": {
           "T": {
             "type": "DT_FLOAT"
@@ -701,31 +719,43 @@
   },
   "weightsManifest": [
     {
-      "paths": ["group1-shard1of1.bin"],
+      "paths": [
+        "group1-shard1of1.bin"
+      ],
       "weights": [
         {
           "name": "StatefulPartitionedCall/sequential/dense_features/numeric/sub/y",
-          "shape": [42],
+          "shape": [
+            42
+          ],
           "dtype": "float32"
         },
         {
           "name": "ConstantFolding/StatefulPartitionedCall/sequential/dense_features/numeric/truediv_recip",
-          "shape": [42],
+          "shape": [
+            42
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_features/numeric/strided_slice/stack",
-          "shape": [1],
+          "shape": [
+            1
+          ],
           "dtype": "int32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_features/numeric/strided_slice/stack_1",
-          "shape": [1],
+          "shape": [
+            1
+          ],
           "dtype": "int32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_features/numeric/strided_slice/stack_2",
-          "shape": [1],
+          "shape": [
+            1
+          ],
           "dtype": "int32"
         },
         {
@@ -735,52 +765,77 @@
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense/MatMul/ReadVariableOp",
-          "shape": [42, 128],
+          "shape": [
+            42,
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense/BiasAdd/ReadVariableOp",
-          "shape": [128],
+          "shape": [
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_1/MatMul/ReadVariableOp",
-          "shape": [128, 128],
+          "shape": [
+            128,
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_1/BiasAdd/ReadVariableOp",
-          "shape": [128],
+          "shape": [
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_2/MatMul/ReadVariableOp",
-          "shape": [128, 128],
+          "shape": [
+            128,
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_2/BiasAdd/ReadVariableOp",
-          "shape": [128],
+          "shape": [
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_3/MatMul/ReadVariableOp",
-          "shape": [128, 128],
+          "shape": [
+            128,
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_3/BiasAdd/ReadVariableOp",
-          "shape": [128],
+          "shape": [
+            128
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_4/MatMul/ReadVariableOp",
-          "shape": [128, 27],
+          "shape": [
+            128,
+            27
+          ],
           "dtype": "float32"
         },
         {
           "name": "StatefulPartitionedCall/sequential/dense_4/BiasAdd/ReadVariableOp",
-          "shape": [27],
+          "shape": [
+            27
+          ],
           "dtype": "float32"
         }
       ]

@@ -1,23 +1,23 @@
 .output_canvas {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .exibidor {
-    justify-content: center;
-    align-self: center;
-    font-family: "Poppins";
-    color: white;
-    text-align: center;
-    border-radius: 40px;
-    width: 700px;
-    height: 480px;
-    background-color: #79BDEF;
+  justify-content: center;
+  align-self: center;
+  font-family: "Poppins";
+  color: white;
+  text-align: center;
+  border-radius: 40px;
+  width: 700px;
+  height: 480px;
+  background-color: #79bdef;
 }
 
 .exibidor-botoes {
-    margin-top: 45px;
+  margin-top: 45px;
 }
 
-.container.text-center.placa {
-    max-width: 600px;
+.exibidor-texto {
+  max-width: 50px;
 }

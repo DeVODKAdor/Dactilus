@@ -16,12 +16,12 @@ import { IconButton, Tooltip } from "@mui/material";
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const maxIndex = 50;
+  const maxIndex = 30;
 
   const [letra, setLetra] = useState([]);
 
   const MODEL_URL =
-    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/model/modeltfjs/model.json";
+    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modelotfjs/model.json";
   const loadModel = async () => {
     const model = loadGraphModel(MODEL_URL);
     return model;
@@ -54,6 +54,7 @@ const Mediapipe = () => {
     23: "X",
     24: "Y",
     25: "Z",
+    26: "Eu te amo",
   };
 
   let resultados = [];
