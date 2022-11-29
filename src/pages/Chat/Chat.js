@@ -10,8 +10,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import Navbar from "../../components/navbar/Navbar";
 import { db } from "../../firebase/firebase";
 import { useAuth } from "../../contexts/AuthContext";
-import { Divider, IconButton, TextField, Typography } from "@mui/material";
-import Profile from "../../components/profile/Profile";
+import { Divider, IconButton, TextField } from "@mui/material";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import VLibras from "@djpfs/react-vlibras";
 import "./Chat.css";
@@ -56,19 +55,6 @@ export default function Chat() {
     <>
       <Navbar />
       <div className="container">
-        <div className="perfis text-center">
-          <Typography variant="h3" gutterBottom>
-            Online
-          </Typography>
-          {users && users.map((user) => <Profile key={user.id} userName={user}/>)}
-        </div>
-        <Divider
-          orientation="vertical"
-          flexItem
-          sx={{
-            backgroundColor: "#11A0F0",
-          }}
-        />
         <main>
           {messages &&
             messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
@@ -76,9 +62,9 @@ export default function Chat() {
         </main>
         <form onSubmit={sendMessage} className="chat-form mb-3">
           <TextField
-            id="outlined-multiline-flexible"
+            className="campo-mensagem"
+            id="outlined-flexible"
             label="Mensagem"
-            multiline
             fullWidth
             maxRows={4}
             value={formValue}
