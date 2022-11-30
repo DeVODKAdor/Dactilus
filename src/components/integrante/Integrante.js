@@ -1,7 +1,7 @@
 import React from "react";
-import Flavia from "../../assets/images/equipe/flavia.png";
-import Davi from "../../assets/images/equipe/davi.png";
-import Arinaldo from "../../assets/images/equipe/arinaldo.png";
+import Flavia from "../../assets/images/equipe/flavia.jpeg";
+import Davi from "../../assets/images/equipe/davi.jpeg";
+import Arinaldo from "../../assets/images/equipe/arinaldo.jpeg";
 import {
   Card,
   CardGroup,

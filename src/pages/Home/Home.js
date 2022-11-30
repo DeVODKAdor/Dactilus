@@ -5,6 +5,10 @@ import Tecnologia from "../../components/tecnologia/Tecnologia";
 import python from "../../assets/images/tecnologias/python.png";
 import mediapipe from "../../assets/images/tecnologias/mediapipe.png";
 import tensorflow from "../../assets/images/tecnologias/tensorflow.png";
+import equipe from "../../assets/images/equipe/equipe.jpeg"
+import arinaldo from "../../assets/images/equipe/arinaldo.jpeg"
+import davi from "../../assets/images/equipe/davi.jpeg"
+import flavia from "../../assets/images/equipe/flavia.jpeg"
 import Integrantes from "../../components/integrante/Integrante";
 import Navbar from "../../components/navbar/Navbar";
 import { UncontrolledCarousel } from "reactstrap";
@@ -29,20 +33,8 @@ function Home() {
             altText: "Slide 1",
             caption: "Slide 1",
             key: 1,
-            src: "https://picsum.photos/id/123/1200/600",
-          },
-          {
-            altText: "Slide 2",
-            caption: "Slide 2",
-            key: 2,
-            src: "https://picsum.photos/id/456/1200/600",
-          },
-          {
-            altText: "Slide 3",
-            caption: "Slide 3",
-            key: 3,
-            src: "https://picsum.photos/id/678/1200/600",
-          },
+            src: equipe,
+          }
         ]}
       />
       <Titulo texto="PROJETO DACTILUS" />
