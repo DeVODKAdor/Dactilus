@@ -118,6 +118,15 @@ const Mediapipe = () => {
     }
     canvasCtx.restore();
   };
+  var [count, setCount] = useState(0)
+  useEffect(() => {
+    if (count === 10) {
+      setLetra((arr) => [...arr, '\n'])
+      setCount(0)
+    } else {
+      setCount(count += 1)
+    }
+  }, [letra])
 
   useEffect(() => {
     const hands = new mpHands.Hands({
@@ -203,6 +212,7 @@ const Mediapipe = () => {
                         src={lixeira}
                         onClick={() => {
                           setLetra([]);
+                          setCount(0)
                         }}
                       ></img>
                     </IconButton>
@@ -217,6 +227,7 @@ const Mediapipe = () => {
                         src={apagar}
                         onClick={() => {
                           setLetra((arr) => arr.slice(0, arr.length - 1));
+                          setCount(count - 1)
                         }}
                       ></img>
                     </IconButton>
