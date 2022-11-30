@@ -9,13 +9,13 @@
 
 .card-numero {
     margin: auto;
-    font-size: 64px;
+    font-size: 55px;
     color: #79BDEF;
     -webkit-text-stroke: 4px #11A0F0;
 }
 
 .card-texto {
     margin: auto;
-    font-size: 40px;
+    font-size: 25px;
 }
 

@@ -48,16 +48,16 @@ function Home() {
       <Titulo texto="PROJETO DACTILUS" />
       <div className="container">
         <Card
-          numero="1"
-          texto="Lorem ipsum ullamcorper suspendisse luctus fusce vestibulum velit bibendum"
+          numero="Quem somos"
+          texto="Somos um software que visa o auxílio na comunicação entre pessoas surdas e ouvintes"
         />
         <Card
-          numero="2"
-          texto="Lorem ipsum ullamcorper suspendisse luctus fusce vestibulum velit bibendum"
+          numero="Problemática"
+          texto="No Brasil, há cerca de 10 (dez) milhões de pessoas surdas. De outro lado, um quantitativo menor de ouvintes que sabem Libras, a linguagem utilizada pelos surdos. Esse fator gera dificuldades para a comunicação entre eles."
         />
         <Card
-          numero="3"
-          texto="Lorem ipsum ullamcorper suspendisse luctus fusce vestibulum velit bibendum"
+          numero="Onde se aplica"
+          texto="O software é aplicado em um contexto social, seja "
         />
       </div>
       <Titulo texto="TECNOLOGIAS UTILIZADAS" />
