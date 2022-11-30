@@ -16,17 +16,17 @@ import { IconButton, Tooltip } from "@mui/material";
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const maxIndex = 30;
+  const maxIndex = 30; // velocidade da tradução
 
   const [letra, setLetra] = useState([]);
 
   const MODEL_URL =
-    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modelotfjs/model.json";
+    "https://dactilusbucket.s3.sa-east-1.amazonaws.com/modelotfjs/model.json"; // arquivo JSON armazenado no s3 bucket da AWS
   const loadModel = async () => {
     const model = loadGraphModel(MODEL_URL);
     return model;
   };
-  const model = loadModel();
+  const model = loadModel(); //modelo JSON que realiza a tradução
   const cypher = {
     0: "A",
     1: "B",
@@ -55,7 +55,7 @@ const Mediapipe = () => {
     24: "Y",
     25: "Z",
     26: "Eu te amo",
-  };
+  }; // sinais possíveis para detectar
 
   let resultados = [];
 
@@ -91,7 +91,7 @@ const Mediapipe = () => {
         let predict = [];
         for (let i = 0; i < 21; i++) {
           predict.push(landmarks[i].x);
-          predict.push(landmarks[i].y);
+          predict.push(landmarks[i].y); // armazenamento das coordenadas da mão (para 21 marcas)
           if (i === 20) {
             model.then(
               (model) => {
@@ -131,7 +131,7 @@ const Mediapipe = () => {
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5,
     });
-    hands.onResults(onResults);
+    hands.onResults(onResults); // executa a função onResults() ao detectar uma mão
 
     if (
       typeof webcamRef.current !== "undefined" &&
