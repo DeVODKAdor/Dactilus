@@ -55,7 +55,7 @@ const Mediapipe = () => {
     24: "Y",
     25: "Z",
     26: "Eu te amo",
-  }; // sinais possíveis para detectar
+  }; // sinais possíveis para detectar 
 
   let resultados = [];
 
@@ -97,9 +97,9 @@ const Mediapipe = () => {
               (model) => {
                 const prediction = tf.tensor(predict);
                 const expandedPrediction = prediction.expandDims(0);
-                const result = model.predict(expandedPrediction);
+                const result = model.predict(expandedPrediction); //ajuste dos  dados das coordenadas
                 const array = result.dataSync();
-                const final = array.indexOf(Math.max(...array));
+                const final = array.indexOf(Math.max(...array)); // sinal detectado
                 resultados.push(final);
                 predict = [];
               },
