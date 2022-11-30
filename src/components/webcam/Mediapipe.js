@@ -16,7 +16,7 @@ import { IconButton, Tooltip } from "@mui/material";
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const maxIndex = 30; // velocidade da tradução
+  const maxIndex = 50; // velocidade da tradução
 
   const [letra, setLetra] = useState([]);
 
@@ -173,6 +173,7 @@ const Mediapipe = () => {
           style={{
             marginLeft: "auto",
             marginRight: "auto",
+            borderRadius: 30,
             left: 0,
             right: 0,
             textAlign: "center",
@@ -182,7 +183,7 @@ const Mediapipe = () => {
           }}
         />
       </div>
-      <div className="col exibidor">
+      <div className="col-6 exibidor">
         <h1 className="p-3">
           <strong>TRADUÇÃO</strong>
         </h1>
