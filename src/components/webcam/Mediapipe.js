@@ -16,7 +16,7 @@ import { IconButton, Tooltip } from "@mui/material";
 const Mediapipe = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const maxIndex = 50; // velocidade da tradução
+  const maxIndex = 70; // velocidade da tradução
 
   const [letra, setLetra] = useState([]);
 
@@ -227,7 +227,7 @@ const Mediapipe = () => {
                         src={apagar}
                         onClick={() => {
                           setLetra((arr) => arr.slice(0, arr.length - 1));
-                          setCount(count - 1)
+                          setCount((count) => count - 1)
                         }}
                       ></img>
                     </IconButton>
@@ -242,6 +242,7 @@ const Mediapipe = () => {
                         src={espacamento}
                         onClick={() => {
                           setLetra((arr) => [...arr, " "]);
+                          setCount(0);
                         }}
                       ></img>
                     </IconButton>
