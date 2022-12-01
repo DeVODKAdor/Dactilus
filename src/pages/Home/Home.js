@@ -1,14 +1,11 @@
 import React from "react";
 import Titulo from "../../components/titulos/Titulo";
-import Card from "../../components/card/Card";
+import Cards from "../../components/card/Card";
 import Tecnologia from "../../components/tecnologia/Tecnologia";
 import python from "../../assets/images/tecnologias/python.png";
 import mediapipe from "../../assets/images/tecnologias/mediapipe.png";
 import tensorflow from "../../assets/images/tecnologias/tensorflow.png";
-import equipe from "../../assets/images/equipe/equipe.jpeg"
-import arinaldo from "../../assets/images/equipe/arinaldo.jpeg"
-import davi from "../../assets/images/equipe/davi.jpeg"
-import flavia from "../../assets/images/equipe/flavia.jpeg"
+import equipe from "../../assets/images/equipe/equipe.jpeg";
 import Integrantes from "../../components/integrante/Integrante";
 import Navbar from "../../components/navbar/Navbar";
 import { UncontrolledCarousel } from "reactstrap";
@@ -34,20 +31,20 @@ function Home() {
             caption: "Slide 1",
             key: 1,
             src: equipe,
-          }
+          },
         ]}
       />
       <Titulo texto="PROJETO DACTILUS" />
       <div className="container">
-        <Card
+        <Cards
           numero="Quem somos"
           texto="Somos um software que visa o auxílio na comunicação entre pessoas surdas e ouvintes"
         />
-        <Card
+        <Cards
           numero="Problemática"
           texto="No Brasil, há cerca de 10 (dez) milhões de pessoas surdas. De outro lado, um quantitativo menor de ouvintes que sabem Libras, a linguagem utilizada pelos surdos. Esse fator gera dificuldades para a comunicação entre eles."
         />
-        <Card
+        <Cards
           numero="Onde se aplica"
           texto="O software é aplicado em um contexto social, seja "
         />
