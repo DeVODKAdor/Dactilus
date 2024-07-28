@@ -4,6 +4,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import "./Login.css";
 import { Alert, CircularProgress } from "@mui/material";
 import { updateProfile } from "firebase/auth";
+import { TwitterAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +15,7 @@ function Login() {
   const { login } = useAuth();
   const { signUpWithGoogle } = useAuth();
   const navigate = useNavigate();
+
   const handleGoogle = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,6 +39,17 @@ function Login() {
       setError("E-mail ou senha incorreta");
       setLoading(false);
     }
+  };
+
+  const signInWithX = () => {
+    const provider = new TwitterAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((err) => {
+        setError("Não foi possível logar com X.");
+      });
   };
   return (
     <div className="container-fluid text-center fundo-login">
@@ -92,6 +106,7 @@ function Login() {
             className="btn btn-outline-primary"
             onClick={handleGoogle}
           ></button>
+          <button className="btn btn-primary-x" onClick={signInWithX}></button>
         </div>
       </div>
     </div>
