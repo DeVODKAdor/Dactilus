@@ -106,7 +106,7 @@ function Login() {
             className="btn btn-outline-primary"
             onClick={handleGoogle}
           ></button>
-          <button className="btn btn-primary-x" onClick={signInWithX}></button>
+          <button className="btn btn-primary-x" onClick={signInWithX}>Logar com X</button>
         </div>
       </div>
     </div>
